@@ -9,7 +9,7 @@ int IsReadingWithinMaxDelta_Return_0(double value, double nextValue, double maxD
 
 int IsSensorInputBreached_Return_1(double* Senosor_Values)
 {
- if (Senosor_Values !=(double)0)
+ if (Senosor_Values !=0)
  {
 	 return 0;
  }
