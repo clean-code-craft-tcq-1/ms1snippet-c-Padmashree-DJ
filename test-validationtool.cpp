@@ -18,7 +18,7 @@ TEST_CASE("reports error when current jumps abruptly") {
 }
 
 TEST_CASE("reports error when Readings are not entered") {
-  double SensorReadings[] = {};
+  double SensorReadings[] = {NULL};
   double SensorMaxDeltaValue= 0.1;
   int numOfReadings = sizeof(SensorReadings) / sizeof(SensorReadings[0]);
   REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, SensorMaxDeltaValue) == 1);
