@@ -1,6 +1,7 @@
 
-int _give_me_a_good_name(double value, double nextValue, double maxDelta);
 
-int validateSOCreadings(double* values, int numOfValues);
+int IsReadingWithinMaxDelta_Return_0(double value, double nextValue, double maxDelta);
 
-int validateCurrentreadings(double* values, int numOfValues);
+int Validate_Sensor_Readings(double* values, int numOfValues, double MaxDeltaValue);
+
+

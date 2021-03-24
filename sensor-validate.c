@@ -1,28 +1,25 @@
 #include "sensor-validate.h"
 
-int _give_me_a_good_name(double value, double nextValue, double maxDelta) {
+
+int IsReadingWithinMaxDelta_Return_0(double value, double nextValue, double maxDelta) {
   if(nextValue - value > maxDelta) {
     return 0;
   }
   return 1;
 }
 
-int validateSOCreadings(double* values, int numOfValues) {
-  int lastButOneIndex = numOfValues - 1;
-  for(int i = 0; i < lastButOneIndex; i++) {
-    if(!_give_me_a_good_name(values[i], values[i + 1], 0.05)) {
-      return 0;
-    }
-  }
-  return 1;
+int Validate_Sensor_Readings(double* Senosor_Values, int NumOfValues, double MaxDeltaValue )
+{
+	int SensorArrayValueIndex=0;
+	if (Senosor_Values =!null)
+	for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
+	{
+		if(!IsReadingWithinMaxDelta_Return_0(Senosor_Values[SensorArrayValueIndex], Senosor_Values[SensorArrayValueIndex+1]), MaxDeltaValue)
+		{
+			return 0;
+		}
+	}
+	else
+	return 1;
 }
-
-int validateCurrentreadings(double* values, int numOfValues) {
-  int lastButOneIndex = numOfValues - 1;
-  for(int i = 0; i < lastButOneIndex; i++) {
-    if(!_give_me_a_good_name(values[i], values[i + 1], 0.1)) {
-      return 0;
-    }
-  }
-  return 1;
-}
+	
