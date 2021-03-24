@@ -9,13 +9,13 @@ int IsReadingWithinMaxDelta_Return_0(double value, double nextValue, double maxD
 
 int IsSensorInputBreached_Return_1(double* Senosor_Values)
 {
- if (Senosor_Values !=0)
+ if (Senosor_Values ==NULL_PTR)
  {
-	 return 0;
+	 return 1;
  }
  else 
  {
-	 return 1;
+	 return 0;
  }
 }
 
