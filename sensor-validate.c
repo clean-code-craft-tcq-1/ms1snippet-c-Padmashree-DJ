@@ -1,5 +1,4 @@
 #include "sensor-validate.h"
-#include <cstddef>
 
 double Senosor_Values_NULL[]={NULL};
 
