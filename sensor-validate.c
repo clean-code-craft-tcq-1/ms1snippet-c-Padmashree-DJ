@@ -1,6 +1,7 @@
 #include "sensor-validate.h"
+#include <cstddef>
 
-double* Senosor_Values_NULL[]={NULL};
+double Senosor_Values_NULL[]={NULL};
 
 int IsReadingWithinMaxDelta_Return_0(double value, double nextValue, double maxDelta) {
   if(nextValue - value > maxDelta) {
