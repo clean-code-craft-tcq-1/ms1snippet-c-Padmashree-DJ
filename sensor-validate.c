@@ -50,7 +50,7 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 {
 	
 	int SensorValueValid= 0;
-	 if (Senosor_Values == NULL)
+	 if (Senosor_Values == NULL_PTR)
 	 {
 		SensorValueValid = 1;
 	 }
