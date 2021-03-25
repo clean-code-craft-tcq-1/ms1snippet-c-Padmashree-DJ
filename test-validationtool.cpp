@@ -50,14 +50,16 @@ TEST_CASE("reports error when Reading entered is not a number") {
   REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == its_a_NAN);
 }
 
-/* TEST_CASE("reports error when number of elments in array is miscalculated") {
+TEST_CASE("reports error when number of elments in array is miscalculated") {
   double SensorReadings[] = {0.0, 0, 0.5, 0.51};
   int numOfReadings = NAN;
-  REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == NAN);
+  int its_a_NAN=2;
+  REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == its_a_NAN);
 }
 
 TEST_CASE("reports error when Reading entered is not a number and number of elments in array is miscalculated") {
   double SensorReadings[] = {0.0, NAN, 0.5, 0.51};
   int numOfReadings = NAN;
-  REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == NAN);
-} */
+  int its_a_NAN=2;
+  REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == its_a_NAN);
+}
