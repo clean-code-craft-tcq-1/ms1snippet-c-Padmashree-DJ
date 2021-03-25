@@ -10,27 +10,27 @@ MaxJumpType MaxDeltaValues={
 };
 
 /*Negative test case */
-TEST_CASE("reports error when soc jumps abruptly") {
+TEST_CASE("Case for Negative test case :- reports error when soc jumps abruptly") {
   double socReadings[] = {0.0, 0.01, 0.5, 0.51};
   int numOfSocReadings = sizeof(socReadings) / sizeof(socReadings[0]);
   REQUIRE(Validate_Sensor_Readings(socReadings, numOfSocReadings, MaxDeltaValues.SOCMaxDeltaValue) == 1);
 }
 /*Positive test case */
-TEST_CASE("reports error when soc jumps abruptly") {
+TEST_CASE("Case for Positive test case :-reports error when soc jumps abruptly") {
   double socReadings[] = {0.0, 0.01, 0.05, 0.06};
   int numOfSocReadings = sizeof(socReadings) / sizeof(socReadings[0]);
   REQUIRE(Validate_Sensor_Readings(socReadings, numOfSocReadings, MaxDeltaValues.SOCMaxDeltaValue) == 0);
 }
 
 /*Negative test case */
-TEST_CASE("reports error when current jumps abruptly") {
+TEST_CASE("Case for Negative test casereports error when current jumps abruptly") {
   double currentReadings[] = {0.0, 0.02, 0.03, 0.33};
   int numOfCurReadings = sizeof(currentReadings) / sizeof(currentReadings[0]);
   REQUIRE(Validate_Sensor_Readings(currentReadings, numOfCurReadings, MaxDeltaValues.CurrentMaxDeltaValue) == 1);
 }
 
 /*Positive test case */
-TEST_CASE("reports error when current jumps abruptly") {
+TEST_CASE("Case for Positive test case:-reports error when current jumps abruptly") {
   double currentReadings[] = {0.0, 0.02, 0.03, 0.06};
   int numOfCurReadings = sizeof(currentReadings) / sizeof(currentReadings[0]);
   REQUIRE(Validate_Sensor_Readings(currentReadings, numOfCurReadings, MaxDeltaValues.CurrentMaxDeltaValue) == 0);
