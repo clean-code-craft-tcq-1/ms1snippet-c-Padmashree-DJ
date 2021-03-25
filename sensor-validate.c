@@ -31,6 +31,7 @@ int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
 				return 0;
 			}
 		}
+		return 1;
 }
 	
 /**
@@ -53,13 +54,13 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 {
 	
 	int SensorValueValid=0;
-	 if ((Senosor_Values[0]==NULL))
+	 if (Senosor_Values[0]==NULL)
 	 {
-		SensorValueValid= 1;
+		SensorValueValid = 1;
 	 }
 	 else 
 	 {
-		 SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues)
+		 SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
 	 }
 	 return SensorValueValid;
 }
