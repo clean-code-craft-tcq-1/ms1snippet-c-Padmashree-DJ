@@ -24,7 +24,7 @@ int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
 		{
 			if(isnanf(Senosor_Values[SensorArrayValueIndex])==1)
 			{
-				return NAN;
+				return 2;
 			}
 		}
 	 return 0;
@@ -50,7 +50,7 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 {
 	
 	int SensorValueValid= 0;
-	 if (Senosor_Values == NULL_PTR)
+	 if (Senosor_Values == NULL)
 	 {
 		SensorValueValid = 1;
 	 }
