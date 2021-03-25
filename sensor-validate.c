@@ -20,7 +20,7 @@
 int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
 {
 	int SensorArrayValueIndex=0;
-	 for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
+	 for( SensorArrayValueIndex=0; SensorArrayValueIndex<=(NumOfValues-1); SensorArrayValueIndex++)
 		{
 			if ((Senosor_Values[SensorArrayValueIndex]==NAN) )
 			{
@@ -56,7 +56,7 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 	 }
 	 else 
 	 {
-		 // SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
+		  SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
 	 }
 	 return SensorValueValid;
 }
@@ -82,7 +82,7 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 int IsValidSensorInputwithinRange_Return_0(double* Senosor_Values, int NumOfValues, double MaxDeltaValue)
 {
 	int SensorArrayValueIndex=0;
-	for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
+	for( SensorArrayValueIndex=0; SensorArrayValueIndex<= (NumOfValues-1); SensorArrayValueIndex++)
 	{
 		if(Senosor_Values[SensorArrayValueIndex+1] - Senosor_Values[SensorArrayValueIndex] > MaxDeltaValue) 
 		{
