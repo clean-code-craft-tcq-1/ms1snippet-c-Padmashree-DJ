@@ -31,7 +31,6 @@ int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
 				return 0;
 			}
 		}
-		return 1;
 }
 	
 /**
