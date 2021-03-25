@@ -2,6 +2,39 @@
 
 /**
  ***************************************************************************************************
+ * Function Name: IsSensorReadinginput_NotaNumber
+ * 
+ * Function Description: Checks if the Sensor Inputs does not contain Not a number.
+ *
+ * \param  Inputs:- double* Senosor_Values
+ *                  int NumOfValues
+ *					
+ *		   Outputs:- None
+ *         
+ * \return  Integer
+ *          
+ * \retval  NAN:- Senosor_Values array or Number of array elements (i.e.NumOfValues) that was passed has a data that is NAN.
+ *          0:- Senosor_Values array or Number of array elements (i.e.NumOfValues) that was passed has a data that is not a NAN
+ ***************************************************************************************************
+ */
+int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
+{
+	int SensorArrayValueIndex=0;
+	 for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
+		{
+			((isnanf(Senosor_Values[SensorArrayValueIndex])) || (isnanf(NumOfValues)))
+			{
+				return NAN;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+}
+	
+/**
+ ***************************************************************************************************
  * Function Name: IsSensorInputBreached_Return_1
  * 
  * Function Description: Checks if the Sensor Inputs are not breached and not empty array.
@@ -16,26 +49,19 @@
  *          1:- Senosor_Values array do not have any data to be validated.
  ***************************************************************************************************
  */
-int IsSensorInputBreached_Return_1(double* Senosor_Values)
+int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 {
+	
+	int SensorValueValid=0;
 	 if ((Senosor_Values[0]==NULL))
 	 {
-		return 1;
+		SensorValueValid= 1;
 	 }
 	 else 
 	 {
-		 for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
-		{
-			if(Senosor_Values[SensorArrayValueIndex] != NAN) 
-			{
-				return 0;
-			}
-			else
-			{
-				return NAN;
-			}
-		}
+		 SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues)
 	 }
+	 return SensorValueValid;
 }
 
 /**
