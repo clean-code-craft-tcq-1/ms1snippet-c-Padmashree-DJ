@@ -1,6 +1,8 @@
 #include <cstddef>
+#include <math.h>
+#include <stdlib.h>
 
-#define NULL_PTR  ((void *)0)
+
 
 typedef struct
 {
