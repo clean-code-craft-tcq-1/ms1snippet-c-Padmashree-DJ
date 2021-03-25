@@ -56,7 +56,7 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 	 }
 	 else 
 	 {
-		 SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
+		 // SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
 	 }
 	 return SensorValueValid;
 }
