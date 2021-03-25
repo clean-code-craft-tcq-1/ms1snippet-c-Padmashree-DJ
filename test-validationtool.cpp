@@ -43,7 +43,7 @@ TEST_CASE("reports error when Readings are not entered") {
 }
 
 TEST_CASE("reports error when Reading entered is not a number") {
-  double  NaNitis = NAN;
+  double  NaNitis = NaN;
   double SensorReadings[] = {0.0, NaNitis, 0.5, 0.51};
   int numOfReadings = sizeof(SensorReadings) / sizeof(SensorReadings[0]);
   REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == 2);
