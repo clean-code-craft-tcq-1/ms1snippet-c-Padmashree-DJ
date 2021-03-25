@@ -1,31 +1,5 @@
 #include "sensor-validate.h"
 
-/* /**
- ***************************************************************************************************
- * Function Name: IsReadingWithinMaxDelta_Return_0
- * 
- * Function Description: Checks if the Sensor Reading is within the Jump specified via input parameter maxDelta.
- *
- * \param  Inputs:- double value
- *					double nextValue
- *					double maxDelta
- *					
- *	       Outputs:- None
- *         
- * \return  Integer
- *          
- * \retval  0:- Jump in Sensor Readings is greater than threshold.
- *          1:- Jump in Sensor Reading is less than threshold and valid.
- ***************************************************************************************************
- *
-int IsReadingWithinMaxDelta_Return_0(double value, double nextValue, double maxDelta) {
-  if(nextValue - value > maxDelta) {
-    return 0;
-  }
-  return 1;
-}
- */
-
 /**
  ***************************************************************************************************
  * Function Name: IsSensorInputBreached_Return_1
@@ -105,16 +79,16 @@ int IsValidSensorInputwithinRange_Return_0(double* Senosor_Values, int NumOfValu
  */
 int Validate_Sensor_Readings(double* Senosor_Values, int NumOfValues, double MaxDeltaValue )
 {
-	int RetVal=IsSensorInputBreached_Return_1(Senosor_Values);
-	if (RetVal==0)
+	int SensorValueValid=IsSensorInputBreached_Return_1(Senosor_Values);
+	if (SensorValueValid==0)
 	{
-		RetVal= IsValidSensorInputwithinRange_Return_0(Senosor_Values, NumOfValues, MaxDeltaValue);
+		SensorValueValid= IsValidSensorInputwithinRange_Return_0(Senosor_Values, NumOfValues, MaxDeltaValue);
 	}
 	else
 	{
 		//do nothing
 	}
-	return RetVal;
+	return SensorValueValid;
 }
 	
 	

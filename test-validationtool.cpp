@@ -3,6 +3,13 @@
 #include "test/catch.hpp"
 #include "sensor-validate.h"
 
+typedef double doubleType;
+typedef enum
+{
+    SOCMaxDeltaValue = 0.05,
+	CurrentMaxDeltaValue =0.1
+}doubleType;
+    
 TEST_CASE("reports error when soc jumps abruptly") {
   double socReadings[] = {0.0, 0.01, 0.5, 0.51};
   double SOCMaxDeltaValue=0.05;
@@ -23,3 +30,4 @@ TEST_CASE("reports error when Readings are not entered") {
   int numOfReadings = sizeof(SensorReadings) / sizeof(SensorReadings[0]);
   REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, SensorMaxDeltaValue) == 1);
 }
+
