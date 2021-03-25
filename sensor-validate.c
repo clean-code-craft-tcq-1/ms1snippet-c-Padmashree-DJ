@@ -22,9 +22,9 @@ int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
 	int SensorArrayValueIndex=0;
 	 for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
 		{
-			if ((Senosor_Values[SensorArrayValueIndex]==NAN) || (NumOfValues==NAN))
+			if ((Senosor_Values[SensorArrayValueIndex]==NAN) )
 			{
-				return NAN;
+				return 0;
 			}
 			else
 			{
