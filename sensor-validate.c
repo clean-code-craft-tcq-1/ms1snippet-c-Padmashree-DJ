@@ -114,14 +114,14 @@ int IsValidSensorInputwithinRange_Return_0(double* Senosor_Values, int NumOfValu
 int Validate_Sensor_Readings(double* Senosor_Values, int NumOfValues, double MaxDeltaValue )
 {
 	int SensorValueValid=IsSensorInputBreached_Return_1(Senosor_Values, NumOfValues);
-	/* if (SensorValueValid==0)
+	if (SensorValueValid==0)
 	{
 	 SensorValueValid= IsValidSensorInputwithinRange_Return_0(Senosor_Values, NumOfValues, MaxDeltaValue);
 	 }
 	 else
 	 {
 		// //do nothing
-	 } */
+	 }
 	return SensorValueValid;
 }
 	
