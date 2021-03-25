@@ -22,15 +22,12 @@ int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
 	int SensorArrayValueIndex=0;
 	 for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
 		{
-			if ((Senosor_Values[SensorArrayValueIndex]!=NAN) )
-			{
-				return 0;
-			}
-			else
+			if ((Senosor_Values[SensorArrayValueIndex]==NAN) )
 			{
 				return NAN;
 			}
 		}
+	 return 0;
 }
 	
 /**
@@ -53,13 +50,13 @@ int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
 {
 	
 	int SensorValueValid= 0;
-	 if (Senosor_Values[0]==NULL)
+	 if (Senosor_Values == NULL_PTR)
 	 {
 		SensorValueValid = 1;
 	 }
 	 else 
 	 {
-		 // SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
+		 SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
 	 }
 	 return SensorValueValid;
 }
@@ -87,12 +84,13 @@ int IsValidSensorInputwithinRange_Return_0(double* Senosor_Values, int NumOfValu
 	int SensorArrayValueIndex=0;
 	for( SensorArrayValueIndex=0; SensorArrayValueIndex< (NumOfValues-1); SensorArrayValueIndex++)
 	{
-		if(Senosor_Values[SensorArrayValueIndex+1] - Senosor_Values[SensorArrayValueIndex] < MaxDeltaValue) 
+		if(Senosor_Values[SensorArrayValueIndex+1] - Senosor_Values[SensorArrayValueIndex] > MaxDeltaValue) 
 		{
-			return 0;
+			return 1;
 		}
+		
 	}
-	return 1;
+	return 0;
 }
 
 /**
