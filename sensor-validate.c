@@ -1,28 +1,132 @@
 #include "sensor-validate.h"
 
-int _give_me_a_good_name(double value, double nextValue, double maxDelta) {
-  if(nextValue - value > maxDelta) {
-    return 0;
-  }
-  return 1;
+/**
+ ***************************************************************************************************
+ * Function Name: IsSensorReadinginput_NotaNumber
+ * 
+ * Function Description: Checks if the Sensor Inputs does not contain Not a number.
+ *
+ * \param  Inputs:- double* Senosor_Values
+ *                  int NumOfValues
+ *					
+ *		   Outputs:- None
+ *         
+ * \return  Integer
+ *          
+ * \retval  NAN:- Senosor_Values array or Number of array elements (i.e.NumOfValues) that was passed has a data that is NAN.
+ *          0:- Senosor_Values array or Number of array elements (i.e.NumOfValues) that was passed has a data that is not a NAN
+ ***************************************************************************************************
+ */
+int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues)
+{
+	int SensorArrayValueIndex=0;
+	int its_a_NAN=2;
+	 for( SensorArrayValueIndex=0; SensorArrayValueIndex<=(NumOfValues-1); SensorArrayValueIndex++)
+		{
+			if(isnanf(Senosor_Values[SensorArrayValueIndex]))
+			{
+				return its_a_NAN;
+			}
+		}
+	 return 0;
+}
+	
+/**
+ ***************************************************************************************************
+ * Function Name: IsSensorInputBreached_Return_1
+ * 
+ * Function Description: Checks if the Sensor Inputs are not breached and not empty array.
+ *
+ * \param  Inputs:- double* Senosor_Values
+ *					
+ *		   Outputs:- None
+ *         
+ * \return  Integer
+ *          
+ * \retval  0:- Senosor_Values array has a data to be vaildated.
+ *          1:- Senosor_Values array do not have any data to be validated.
+ ***************************************************************************************************
+ */
+int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues)
+{
+	
+	int SensorValueValid= 0;
+	 if (NumOfValues == 0)
+	 {
+		SensorValueValid = 1;
+	 }
+	 else 
+	 {
+		  SensorValueValid= IsSensorReadinginput_NotaNumber(Senosor_Values,NumOfValues);
+	 }
+	 return SensorValueValid;
 }
 
-int validateSOCreadings(double* values, int numOfValues) {
-  int lastButOneIndex = numOfValues - 1;
-  for(int i = 0; i < lastButOneIndex; i++) {
-    if(!_give_me_a_good_name(values[i], values[i + 1], 0.05)) {
-      return 0;
-    }
-  }
-  return 1;
+/**
+ ***************************************************************************************************
+ * Function Name: IsValidSensorInputwithinRange_Return_0
+ * 
+ * Function Description: check if the Sensor Inputs are not breached and not empty array.
+ *
+ * \param  Inputs:- double* Senosor_Values
+ *					int NumOfValues
+ *					double MaxDeltaValue
+ *					
+ *		   Outputs:- None
+ *         
+ * \return  Integer
+ *          
+ * \retval  0:- Jump in Sensor Readings is greater than threshold.
+ *          1:- Jump in Sensor Reading is less than threshold and valid.
+ ***************************************************************************************************
+ */
+int IsValidSensorInputwithinRange_Return_0(double* Senosor_Values, int NumOfValues, double MaxDeltaValue)
+{
+	int SensorArrayValueIndex=0;
+	for( SensorArrayValueIndex=0; SensorArrayValueIndex<= (NumOfValues-1); SensorArrayValueIndex++)
+	{
+		if(Senosor_Values[SensorArrayValueIndex+1] - Senosor_Values[SensorArrayValueIndex] > MaxDeltaValue) 
+		{
+			return 1;
+		}
+		
+	}
+	return 0;
 }
 
-int validateCurrentreadings(double* values, int numOfValues) {
-  int lastButOneIndex = numOfValues - 1;
-  for(int i = 0; i < lastButOneIndex; i++) {
-    if(!_give_me_a_good_name(values[i], values[i + 1], 0.1)) {
-      return 0;
-    }
-  }
-  return 1;
+/**
+ ***************************************************************************************************
+ * Function Name: Validate_Sensor_Readings
+ * 
+ * Function Description: Checks if the Sensor Readings are Validated against abrupt jumps and Validity of the Input reading.
+ *
+ * \param  Inputs:- double* Senosor_Values
+ *					int NumOfValues
+ *					double MaxDeltaValue
+ *					
+ *		   Outputs:- None
+ *         
+ * \return  Integer
+ *          
+ * \retval  0:- Senosor_Values is vaild.
+ *          1:- Senosor_Values is not valid.
+ ***************************************************************************************************
+ */
+int Validate_Sensor_Readings(double* Senosor_Values, int NumOfValues, double MaxDeltaValue )
+{
+	int SensorValueValid=IsSensorInputBreached_Return_1(Senosor_Values, NumOfValues);
+	if (SensorValueValid==0)
+	{
+	 SensorValueValid= IsValidSensorInputwithinRange_Return_0(Senosor_Values, NumOfValues, MaxDeltaValue);
+	 }
+	 else
+	 {
+		// //do nothing
+	 }
+	return SensorValueValid;
 }
+	
+	
+	
+	
+	

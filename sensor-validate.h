@@ -1,6 +1,19 @@
+#include <cstddef>
+#include <math.h>
+#include <stdlib.h>
 
-int _give_me_a_good_name(double value, double nextValue, double maxDelta);
 
-int validateSOCreadings(double* values, int numOfValues);
+typedef struct
+{
+    double SOCMaxDeltaValue;
+	double CurrentMaxDeltaValue;
+}MaxJumpType;
+    
+int IsSensorInputBreached_Return_1(double* Senosor_Values,int NumOfValues);
+int IsSensorReadinginput_NotaNumber(double* Senosor_Values,int NumOfValues);
+int IsValidSensorInputwithinRange_Return_0(double* Senosor_Values, int NumOfValues, double MaxDeltaValue);
+int Validate_Sensor_Readings(double* values, int numOfValues, double MaxDeltaValue);
 
-int validateCurrentreadings(double* values, int numOfValues);
+
+
+
