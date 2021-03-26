@@ -37,8 +37,8 @@ TEST_CASE("Case for Positive test case:-reports error when current jumps abruptl
 }
 
 TEST_CASE("reports error when Readings are not entered") {
-  double SensorReadings[] = {NULL};
-  int numOfReadings = 0;
+  double SensorReadings[] = {};
+  int numOfReadings = sizeof(SensorReadings) / sizeof(SensorReadings[0]);
   REQUIRE(Validate_Sensor_Readings(SensorReadings, numOfReadings, MaxDeltaValues.CurrentMaxDeltaValue) == 1);
 }
 
